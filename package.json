@@ -1,0 +1,21 @@
+{
+  "name": "my-journey-server",
+  "version": "0.0.1",
+  "description": "Web Server for myJourney",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Predjo@bitbucket.org/Predjo/my-journey-server.git"
+  },
+  "keywords": [
+    "web",
+    "server",
+    "myJourney"
+  ],
+  "author": "Nikola Predovan",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Predjo/my-journey-server#readme"
+}
