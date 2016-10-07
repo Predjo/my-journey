@@ -22,15 +22,26 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/Predjo/my-journey-server#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "knex": "^0.12.2",
     "lodash": "^4.16.2",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "require-all": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",

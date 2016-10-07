@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = {
-  host : 'localhost',
-  port : 3000,
+  host  : 'localhost',
+  port  : 3000,
+  https : false,
 
   db : {
     client: 'mysql',
