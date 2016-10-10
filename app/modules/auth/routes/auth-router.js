@@ -4,7 +4,7 @@ const passport    = require('passport');
 const router      = express.Router({ mergeParams: true });
 
 router.route('/facebook')
-  .get(passport.authenticate('facebook', { scope: 'email' }));
+  .get(passport.authenticate('facebook', { scope: 'email', session: false }));
 
 router.route('/facebook/callback')
   .get(passport.authenticate('facebook', {
@@ -14,23 +14,23 @@ router.route('/facebook/callback')
   }));
 
 router.route('/twitter')
-  .get(function(req, res) {
-
-  });
+  .get(passport.authenticate('twitter', { scope: 'email', session: false }));
 
 router.route('/twitter/callback')
-  .get(function(req, res) {
-
-  });
+  .get(passport.authenticate('twitter', {
+    successRedirect : '/dashboard',
+    failureRedirect : '/',
+    session         : false
+  }));
 
 router.route('/google')
-  .get(function(req, res) {
-
-  });
+  .get(passport.authenticate('google', { scope: 'email', session: false }));
 
 router.route('/google/callback')
-  .get(function(req, res) {
-
-  });
+  .get(passport.authenticate('google', {
+    successRedirect : '/dashboard',
+    failureRedirect : '/',
+    session         : false
+  }));
 
 module.exports = router;

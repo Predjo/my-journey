@@ -1,4 +1,5 @@
 
+const _                = require('lodash');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const configAuth       = require('../config/auth-config');
 
@@ -15,8 +16,8 @@ module.exports         =  new FacebookStrategy({
     process.nextTick(() => {
 
       const name      = profile.name.givenName + ' ' + profile.name.familyName;
-      const email     = profile.emails[0].value;
-      const avatarUrl = profile.photos[0] && profile.photos[0].value;
+      const email     = _.get(profile, 'emails[0].value');
+      const avatarUrl = _.get(profile, 'photos[0].value');
 
       User.query({ where : { facebookId : profile.id }, orWhere : { email }})
       .fetch().then( user => {
@@ -32,6 +33,8 @@ module.exports         =  new FacebookStrategy({
               name          : user.get('name') || name,
               avatarUrl     : user.get('avatarUrl') || avatarUrl
             }).then( () => done(null, user) ).catch( err => done(err));
+          } else {
+            done(null, user);
           }
         
         // User doesnt exist, create one

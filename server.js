@@ -7,6 +7,7 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan       = require('morgan');
 const passport     = require('passport');
+const session      = require('express-session');
 
 const auth         = require('./app/modules/auth');
 
@@ -41,6 +42,10 @@ app.use(morgan('dev'));
 
 // user passport for auth
 passport.use(auth.strategies.facebookStrategy);
+passport.use(auth.strategies.googleStrategy);
+passport.use(auth.strategies.twitterStrategy);
+
+app.use(session({ secret : 'verysecret',  resave : false, saveUninitialized : false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
