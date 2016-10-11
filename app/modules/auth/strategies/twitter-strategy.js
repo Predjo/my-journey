@@ -5,7 +5,7 @@ const configAuth       = require('../config/auth-config');
 
 const User             = require(global.__base + '/app/models/user');
 
-module.exports         =  new TweitterStrategy({
+module.exports = new TweitterStrategy({
   consumerKey       : configAuth.twitterAuth.consumerKey,
   consumerSecret    : configAuth.twitterAuth.consumerSecret,
   callbackURL       : configAuth.twitterAuth.callbackURL,

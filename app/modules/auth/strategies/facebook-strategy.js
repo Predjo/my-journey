@@ -5,7 +5,7 @@ const configAuth       = require('../config/auth-config');
 
 const User             = require(global.__base + '/app/models/user');
 
-module.exports         =  new FacebookStrategy({
+module.exports = new FacebookStrategy({
   clientID          : configAuth.facebookAuth.appID,
   clientSecret      : configAuth.facebookAuth.appSecret,
   callbackURL       : configAuth.facebookAuth.callbackURL,

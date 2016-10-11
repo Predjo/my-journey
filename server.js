@@ -44,6 +44,7 @@ app.use(morgan('dev'));
 passport.use(auth.strategies.facebookStrategy);
 passport.use(auth.strategies.googleStrategy);
 passport.use(auth.strategies.twitterStrategy);
+passport.use(auth.strategies.jwtStrategy);
 
 app.use(session({ secret : 'verysecret',  resave : false, saveUninitialized : false }));
 app.use(passport.initialize());

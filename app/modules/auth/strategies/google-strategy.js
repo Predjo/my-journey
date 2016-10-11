@@ -5,7 +5,7 @@ const configAuth       = require('../config/auth-config');
 
 const User             = require(global.__base + '/app/models/user');
 
-module.exports         =  new GoogleStrategy({
+module.exports = new GoogleStrategy({
   clientID          : configAuth.googleAuth.clientID,
   clientSecret      : configAuth.googleAuth.clientSecret,
   callbackURL       : configAuth.googleAuth.callbackURL,

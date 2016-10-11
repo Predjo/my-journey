@@ -23,5 +23,9 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     }
+  },
+
+  auth : {
+    secret : 'myYournej1989'
   }
 }
