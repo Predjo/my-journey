@@ -3,7 +3,7 @@ const _                = require('lodash');
 const TweitterStrategy = require('passport-twitter').Strategy;
 const configAuth       = require('../config/auth-config');
 
-const User             = require(global.__base + '/app/models/user');
+const User             = require(global.__base + '/server/models/user');
 
 module.exports = new TweitterStrategy({
   consumerKey       : configAuth.twitterAuth.consumerKey,

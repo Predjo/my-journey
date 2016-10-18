@@ -1,4 +1,3 @@
-'use strict';
 
 global.__base      = __dirname + '/';
 
@@ -9,16 +8,16 @@ const morgan       = require('morgan');
 const passport     = require('passport');
 const session      = require('express-session');
 
-const auth         = require('./app/modules/auth');
+const auth         = require('./server/modules/auth');
+const dashboard    = require('./server/modules/dashboard');
 
 const Config       = require('./config');
 
-const usersRoute   = require('./app/routes/users');
-const authRouter   = auth.routes.authRouter;
+const usersRoute   = require('./server/routes/users');
 
 const flash        = require('connect-flash');
 
-const app  = express();
+const app          = express();
 
 // ============================================================================
 //  Configuration
@@ -27,7 +26,7 @@ const app  = express();
 const PORT = process.env.PORT || Config.port;
 
 // use body parser so we can get info from POST and/or URL parameters
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended : false }));
 app.use(bodyParser.json());
 
 // use cookie parser to get cookie params
@@ -35,7 +34,7 @@ app.use(cookieParser());
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/app/views');
+app.set('views', __dirname + '/server/views');
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
@@ -58,27 +57,25 @@ app.use(flash());
 // ============================================================================
 
 // index page
-app.get('/', function(req, res) {
-  res.render('pages/index');
-});
-
-// dashboard page
-app.get('/dashboard', function(req, res) {
-  res.render('pages/dashboard');
+app.get('/', function (req, res) {
+  res.render('pages/index', { preloadedState : JSON.stringify({ test : 'test'}) });
 });
 
 // rest api init
-const apiRouter = express.Router({ mergeParams: true });
+const apiRouter = express.Router({ mergeParams : true });
 apiRouter.use('/users', usersRoute);
 app.use('/v1/api', apiRouter);
 
-// auth init
-app.use('/auth', authRouter);
+console.log(dashboard);
+
+// modules init
+app.use('/auth', auth.routes);
+app.use('/dashboard', dashboard.routes);
 
 // ============================================================================
 //  Start Server
 // ============================================================================
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log('Hello from myJourney.io server listening on port %s.', PORT);
 });

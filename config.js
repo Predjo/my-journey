@@ -1,4 +1,3 @@
-'use strict';
 
 module.exports = {
   host  : 'localhost',
@@ -6,26 +5,27 @@ module.exports = {
   https : false,
 
   db : {
-    client: 'mysql',
-    connection: {
+    client : 'mysql',
+
+    connection : {
       database : 'my_journey',
       user     : 'root',
       password : 'root',
       host     : '127.0.0.1',
       charset  : 'utf8'
     },
-    
-    pool: {
-      min: 2,
-      max: 10
+
+    pool : {
+      min : 2,
+      max : 10
     },
-    
-    migrations: {
-      tableName: 'knex_migrations'
+
+    migrations : {
+      tableName : 'knex_migrations'
     }
   },
 
   auth : {
     secret : 'myYournej1989'
   }
-}
+};

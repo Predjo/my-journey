@@ -1,10 +1,10 @@
 
 const express     = require('express');
 const passport    = require('passport');
-const router      = express.Router({ mergeParams: true });
+const router      = express.Router({ mergeParams : true });
 
 router.route('/facebook')
-  .get(passport.authenticate('facebook', { scope: 'email', session: false }));
+  .get(passport.authenticate('facebook', { scope : 'email', session : false }));
 
 router.route('/facebook/callback')
   .get(passport.authenticate('facebook', {
@@ -14,7 +14,7 @@ router.route('/facebook/callback')
   }));
 
 router.route('/twitter')
-  .get(passport.authenticate('twitter', { scope: 'email', session: false }));
+  .get(passport.authenticate('twitter', { scope : 'email', session : false }));
 
 router.route('/twitter/callback')
   .get(passport.authenticate('twitter', {
@@ -24,7 +24,7 @@ router.route('/twitter/callback')
   }));
 
 router.route('/google')
-  .get(passport.authenticate('google', { scope: 'email', session: false }));
+  .get(passport.authenticate('google', { scope : 'email', session : false }));
 
 router.route('/google/callback')
   .get(passport.authenticate('google', {

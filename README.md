@@ -1,1 +1,1 @@
-myJourney Web Server
+myJourney Web Server & App
