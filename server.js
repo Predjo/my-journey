@@ -1,6 +1,4 @@
 
-global.__base      = __dirname + '/';
-
 const express      = require('express');
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -11,7 +9,7 @@ const session      = require('express-session');
 const auth         = require('./server/modules/auth');
 const dashboard    = require('./server/modules/dashboard');
 
-const Config       = require('./config');
+const Config       = require('config');
 
 const usersRoute   = require('./server/routes/users');
 
@@ -65,8 +63,6 @@ app.get('/', function (req, res) {
 const apiRouter = express.Router({ mergeParams : true });
 apiRouter.use('/users', usersRoute);
 app.use('/v1/api', apiRouter);
-
-console.log(dashboard);
 
 // modules init
 app.use('/auth', auth.routes);

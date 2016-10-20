@@ -3,7 +3,7 @@ const _                = require('lodash');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const configAuth       = require('../config/auth-config');
 
-const User             = require(global.__base + '/server/models/user');
+const User             = require('server/models/user');
 
 module.exports = new FacebookStrategy({
   clientID          : configAuth.facebookAuth.appID,

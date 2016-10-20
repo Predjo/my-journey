@@ -1,5 +1,5 @@
 
-const Config = require(global.__base + '/config');
+const Config = require('config');
 
 module.exports = {
   facebookAuth : {
