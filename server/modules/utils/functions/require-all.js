@@ -1,7 +1,7 @@
 
 /* Requires all files in a folder */
 
-module.exports = function (dirname) {
+module.exports = function requireAll(dirname) {
 
   return require('require-all')({
     dirname   : dirname,

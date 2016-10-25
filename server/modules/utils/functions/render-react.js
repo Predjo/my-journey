@@ -6,7 +6,7 @@ const renderToString = require('react-dom/server').renderToString;
 const RouterContext  = require('react-router').RouterContext;
 const Provider       = require('react-redux').Provider;
 
-module.exports = function (renderProps, store) {
+module.exports = function renderReact(renderProps, store) {
   return renderToString(
     //<Provider store={store}>
       <RouterContext { ...renderProps } />

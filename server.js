@@ -5,7 +5,9 @@ const cookieParser = require('cookie-parser');
 const morgan       = require('morgan');
 const passport     = require('passport');
 const session      = require('express-session');
+const path         = require('path');
 
+const index        = require('./server/modules/index');
 const auth         = require('./server/modules/auth');
 const dashboard    = require('./server/modules/dashboard');
 
@@ -54,10 +56,10 @@ app.use(flash());
 //  Routes
 // ============================================================================
 
-// index page
-app.get('/', function (req, res) {
-  res.render('pages/index', { preloadedState : JSON.stringify({ test : 'test'}) });
-});
+// static pages init
+const buildDir = '/build';
+const staticDir = path.join(__dirname, buildDir);
+app.use('/static', express.static(staticDir));
 
 // rest api init
 const apiRouter = express.Router({ mergeParams : true });
@@ -67,6 +69,8 @@ app.use('/v1/api', apiRouter);
 // modules init
 app.use('/auth', auth.routes);
 app.use('/dashboard', dashboard.routes);
+app.use('/', index.routes);
+
 
 // ============================================================================
 //  Start Server

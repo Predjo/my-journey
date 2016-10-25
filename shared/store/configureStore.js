@@ -6,7 +6,7 @@ import reducers          from 'shared/reducers';
 
 const logger      = createLogger();
 const rootReducer = combineReducers(Object.assign({}, reducers, {
-  routing: routerReducer
+  routing : routerReducer
 }));
 
 const configureStore = (initialState = {}) => {

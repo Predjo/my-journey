@@ -8,7 +8,8 @@
     "start-dev": "cross-env NODE_PATH=. nodemon ./server.js --exec babel-node --presets es2015,stage-0,react",
     "migrate": "./node_modules/knex/bin/cli.js migrate:latest --env development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cross-env": "node_modules/cross-env/bin/cross-env.js"
+    "cross-env": "node_modules/cross-env/bin/cross-env.js",
+    "gulp": "./node_modules/gulp/bin/gulp.js"
   },
   "repository": {
     "type": "git",
@@ -61,11 +62,15 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-runtime": "^6.11.6",
+    "del": "^2.2.2",
     "eslint": "^3.7.0",
     "eslint-plugin-flowtype": "^2.19.0",
     "eslint-plugin-react": "^6.4.1",
+    "gulp": "^3.9.1",
+    "react-router-redux": "^4.0.6",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.0"
+    "webpack-hot-middleware": "^2.13.0",
+    "webpack-stream": "^3.2.0"
   }
 }

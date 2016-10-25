@@ -1,4 +1,4 @@
 
 //const requireAll   = require('../utils').requireAll;
 
-exports.routes     = require('./routes');
+exports.routes     = require('./routes/dashboard-routes');
