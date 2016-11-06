@@ -1,4 +1,7 @@
 
+// enable use of css-modules on the backend
+require('css-modules-require-hook/preset');
+
 const express      = require('express');
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');

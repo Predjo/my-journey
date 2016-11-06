@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react';
 class Pricing extends Component {
 
   componentDidMount() {
-    console.log('Test module');
+    console.log('Test module v4');
   }
 
   render () {

@@ -3,6 +3,7 @@
 
 <head>
   <title> myJourney.io :: Dashboard </title>
+  <link rel="stylesheet" type="text/css" href="/static/styles/dashboard.css">
 </head>
 
 <body class="container">
@@ -10,9 +11,14 @@
 <main id = "root"><%- rootMarkup %></main>
 
 <script>
-  window.__PRELOADED_STATE__ = '<%- preloadedState %>';
+  window.__PRELOADED_STATE__ = '<%- JSON.stringify(preloadedState) %>';
 </script>
+<script src="/static/scripts/vendor.js"></script>
 <script src="/static/scripts/dashboard.js"></script>
+
+<% if (process.env.NODE_ENV === 'development') {%>
+  <script src="http://localhost:35729/livereload.js"></script>
+<% } %>
 
 </body>
 </html>

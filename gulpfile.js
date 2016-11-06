@@ -1,43 +1,25 @@
-const gulp    = require('gulp');
-const webpack = require('webpack-stream');
-const path    = require('path');
-const del     = require('del');
+
+const gulp          = require('gulp');
+const webpackStream = require('webpack-stream');
+const del           = require('del');
+
+const devClientConfig = require('./webpack/webpack.config.dev-client');
+//const devServerConfig = require('./webpack/webpack.config.dev-server');
 
 gulp.task('clean', function(){
   del(['build/*']);
 });
 
-gulp.task('js', ['clean'], function () {
+gulp.task('build-client', ['clean'], function () {
+
   return gulp.src('client/*')
-    .pipe(webpack({
-      devtool : 'eval',
-
-      resolve : {
-        root : [
-          path.resolve('.')
-        ],
-        extensions : ['', '.js', '.jsx', '.scss']
-      },
-
-      entry : {
-        index     : 'client/index.js',
-        dashboard : 'client/dashboard.js',
-      },
-
-      output : {
-        filename : '[name].js'
-      },
-
-      module : {
-        loaders : [{
-          test    : /\.js$/,
-          exclude : /(node_modules|build)/,
-          loader  : 'babel',
-          query   : {
-            presets : ['es2015', 'react', 'stage-0']
-          }
-        }]
-      }
-    }))
-    .pipe(gulp.dest('build/scripts/'));
+    .pipe(webpackStream(devClientConfig))
+    .pipe(gulp.dest('build/'));
 });
+
+/*gulp.task('build-server', [], function () {
+
+  return gulp.src('./*')
+    .pipe(webpackStream(devServerConfig))
+    .pipe(gulp.dest('build/'));
+});*/
