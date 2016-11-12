@@ -1,3 +1,18 @@
-.wrap {
+$nav-drawer-width: 300px;
+
+.layout {
   background-color: lightgray;
+  min-height: 100vh;
+
+  .panel {
+    height: initial;
+  }
+
+  .navDrawer {
+    max-width: $nav-drawer-width !important;
+
+    .drawerContent {
+      max-width: $nav-drawer-width !important;
+    }
+  }
 }

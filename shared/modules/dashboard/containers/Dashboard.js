@@ -1,11 +1,12 @@
 
 import React, { PropTypes, Component } from 'react';
-import MuiThemeProvider                from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme                     from 'material-ui/styles/getMuiTheme';
 
-const muiTheme = getMuiTheme({ userAgent : typeof window !== 'undefined' ? window.navigator.userAgent : null });
+import { Panel, Layout, NavDrawer } from 'react-toolbox/lib/layout';
 
 import style from './Dashboard.scss';
+
+import Header  from '../components/Header';
+import NavSideBar from '../components/NavSideBar';
 
 class Dashboard extends Component {
 
@@ -14,12 +15,19 @@ class Dashboard extends Component {
     const { children } = this.props;
 
     return (
-      <MuiThemeProvider muiTheme = { muiTheme } >
-        <div className = { style.wrap } >
-          Dashboard
-          { children }
-        </div>
-      </MuiThemeProvider>
+        <Layout theme = { style }>
+          <NavDrawer
+            active
+            permanentAt = "md" >
+            <NavSideBar />
+          </NavDrawer>
+
+          <Panel className = { style.panel } >
+            <Header />
+            { children }
+          </Panel>
+
+        </Layout>
     );
   }
 }
