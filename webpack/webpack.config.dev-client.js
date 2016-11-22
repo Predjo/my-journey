@@ -59,10 +59,10 @@ const config = {
       __DEVCLIENT__ : true,
       __DEVSERVER__ : false
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'scripts/vendor.js'),
-    //new webpack.optimize.UglifyJsPlugin({ mangle : true, compress : { warnings : false }}),
-    new webpack.optimize.DedupePlugin(),
     new ExtractTextPlugin('styles/[name].css'),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'scripts/vendor.js', Infinity),
+    //new webpack.optimize.UglifyJsPlugin({ mangle : true, compress : { warnings : false }}),
     new LiveReloadPlugin()
   ]
 };

@@ -8,15 +8,15 @@ import styles from './Header.scss';
 
 class Header extends Component {
 
-  toggleDrawer() {
-    console.log('Hello');
+  static propTypes = {
+    handleToggleSideBar : PropTypes.func
   }
 
   render () {
 
     return (
       <AppBar className = { styles.wrap } >
-        <IconButton icon = 'menu' inverse = { true } onClick = { () => this.toggleDrawer() }/>
+        <IconButton icon = 'menu' inverse = { true } onClick = { () => this.props.handleToggleSideBar() }/>
       </AppBar>
     );
   }
