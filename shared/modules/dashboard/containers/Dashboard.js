@@ -7,7 +7,7 @@ import { Panel, Layout, NavDrawer } from 'react-toolbox/lib/layout';
 import Header  from '../components/Header';
 import NavSideBar from '../components/NavSideBar';
 
-import { toggleDashboardSidebar } from '../actions/dashboardActions';
+import { toggleDashboardSidebar } from '../actions/dashboard-actions';
 
 import style from './Dashboard.scss';
 

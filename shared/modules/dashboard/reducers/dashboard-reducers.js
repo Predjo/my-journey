@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 
 import { createReducer } from 'shared/modules/common';
 
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from '../constants/action-types';
 
 const defaultState = {
   showNavSideBar : false

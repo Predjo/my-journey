@@ -1,3 +1,4 @@
 {
-  "plugins": ["transform-decorators"]
+  "plugins": ["transform-decorators"],
+  "presets": ["es2015", "stage-0", "react"]
 }

@@ -1,5 +1,5 @@
 
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from '../constants/action-types';
 
 export function toggleDashboardSidebar(show = true) {
   return {
