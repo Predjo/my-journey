@@ -7,7 +7,7 @@ const renderReact = require('server/modules/utils').renderReact;
 const routes      = require('shared/modules/dashboard').routes;
 
 const configureStore = require('shared/store/configure-dashboard-store').default;
-const store          = configureStore({});
+const store          = configureStore();
 const preloadedState = store.getState();
 
 router.route('*').get(matchRoute(routes, (req, res, props) => {

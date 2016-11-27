@@ -11,7 +11,7 @@ import { toggleDashboardSidebar } from '../actions/dashboard-actions';
 
 import style from './Dashboard.scss';
 
-class Dashboard extends Component {
+export class Dashboard extends Component {
 
   static propTypes = {
     dashboardState : PropTypes.object
@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
   toggleSideBar() {
     const { dispatch, dashboardState } = this.props;
-    dispatch(toggleDashboardSidebar( !dashboardState.showNavSideBar ));
+    dispatch(toggleDashboardSidebar( !dashboardState.get('showNavSideBar') ));
   }
 
   render () {
@@ -29,7 +29,7 @@ class Dashboard extends Component {
     return (
         <Layout theme = { style }>
           <NavDrawer
-            active         = { dashboardState.showNavSideBar }
+            active         = { dashboardState.get('showNavSideBar') }
             onOverlayClick = {  () => this.toggleSideBar()  } >
             <NavSideBar />
           </NavDrawer>
@@ -45,8 +45,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { dashboard } = state;
-  return { dashboardState : dashboard };
+  return { dashboardState : state.get('dashboard') };
 };
 
 export default connect(mapStateToProps)(Dashboard);

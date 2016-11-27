@@ -5,7 +5,7 @@ const renderReact = require('server/modules/utils').renderReact;
 
 const routes         = require('shared/modules/index').routes;
 const configureStore = require('shared/store/configure-index-store').default;
-const store          = configureStore({});
+const store          = configureStore();
 const preloadedState = store.getState();
 
 router.route('*').get(matchRoute(routes, (req, res, props) => {

@@ -6,17 +6,21 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import { routes as dashboardRoutes } from 'shared/modules/dashboard';
 import configureStore from 'shared/store/configure-dashboard-store';
+import { fromJS } from 'immutable';
 
 // Requirement for material UI
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 // Create store and add hydrate state from server
-const store = configureStore( JSON.parse(window.__PRELOADED_STATE__));
+const store = configureStore( fromJS(JSON.parse(window.__PRELOADED_STATE__)));
 
 // Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store);
-
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState (state) {
+      return state.get('routing').toObject();
+  }
+});
 // Required for replaying actions from devtools to work
 //reduxRouterMiddleware.listenForReplays(store)
 

@@ -8,7 +8,7 @@ const Provider       = require('react-redux').Provider;
 
 module.exports = function renderReact(renderProps, store) {
   return renderToString(
-    <Provider store={store}>
+    <Provider store = { store }>
       <RouterContext { ...renderProps } />
     </Provider>
   );

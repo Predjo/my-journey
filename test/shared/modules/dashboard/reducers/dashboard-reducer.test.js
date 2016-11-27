@@ -2,12 +2,12 @@
 import {
   dashboardReducer,
   toggleDashboardSidebar,
-  dashboardReducerDefaultState,
+  dashboardReducerInitialState,
 } from 'shared/modules/dashboard';
 import { describe, it }      from 'mocha';
 import { expect }            from 'chai';
 
-const defaultState = dashboardReducerDefaultState;
+const defaultState = dashboardReducerInitialState;
 
 describe('dashboard reducer', () => {
 

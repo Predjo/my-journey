@@ -3,7 +3,7 @@ import { Button } from 'react-toolbox/lib/button';
 
 import style from './Explore.scss';
 
-class Explore extends Component {
+export class Explore extends Component {
 
 
   render () {
