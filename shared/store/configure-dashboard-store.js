@@ -3,11 +3,11 @@ import thunkMiddleware   from 'redux-thunk';
 import createLogger      from 'redux-logger';
 import { routerReducer } from 'react-router-redux';
 
-import { dashboardReducers } from 'shared/modules/dashboard';
+import { dashboardReducer } from 'shared/modules/dashboard';
 
 const logger      = createLogger();
 const rootReducer = combineReducers({
-  dashboard : dashboardReducers,
+  dashboard : dashboardReducer,
   routing   : routerReducer
 });
 

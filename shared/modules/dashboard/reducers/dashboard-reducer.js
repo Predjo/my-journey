@@ -5,15 +5,15 @@ import { createReducer } from 'shared/modules/common';
 
 import ActionTypes from '../constants/action-types';
 
-const defaultState = {
+export const defaultState = Map({
   showNavSideBar : false
-};
+});
 
-export const dashboardReducers = createReducer(defaultState, {
+export const dashboardReducer = createReducer(defaultState, {
 
   [ ActionTypes.TOGGLE_DASHBOARD_SIDEBAR ](state, action) {
     const show = Boolean(action.show);
-    return Object.assign({}, state, { showNavSideBar : show });
+    return state.set('showNavSideBar', show);
   }
 
 });
