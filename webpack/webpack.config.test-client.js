@@ -1,18 +1,12 @@
 
 const webpack       = require('webpack');
 const path          = require('path');
-const argv          = require('yargs').argv;
 
-const LiveReloadPlugin  = require('webpack-livereload-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const vendor = ['react', 'redux', 'react-redux', 'react-router', 'react-router-redux'];
 
 const config = {
 
-  name : 'client-dev',
-
-  devtool : 'eval',
+  name : 'client-test',
 
   resolve : {
     root : [
@@ -20,20 +14,6 @@ const config = {
     ],
     extensions : ['', '.js', '.jsx', '.scss']
   },
-
-  entry : {
-    index     : 'client/index.js',
-    dashboard : 'client/dashboard.js',
-    vendor    : vendor
-  },
-
-  output : {
-    filename : 'scripts/[name].js'
-  },
-
-  watch : Boolean(argv.watch),
-
-  stats : { children : false },
 
   module : {
     loaders : [
@@ -56,16 +36,19 @@ const config = {
     }]
   },
 
+  node : {
+    fs            : 'empty',
+    child_process : 'empty'
+  },
+
+  stats : { children : false },
+
   plugins : [
     new webpack.DefinePlugin({
       __DEVCLIENT__ : true,
       __DEVSERVER__ : false
     }),
-    new ExtractTextPlugin('styles/[name].css'),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'scripts/vendor.js', Infinity),
-    //new webpack.optimize.UglifyJsPlugin({ mangle : true, compress : { warnings : false }}),
-    new LiveReloadPlugin()
+    new ExtractTextPlugin('styles/[name].css')
   ]
 };
 

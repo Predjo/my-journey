@@ -4,8 +4,8 @@ import {
   toggleDashboardSidebar,
   dashboardReducerInitialState,
 } from 'shared/modules/dashboard';
-import { describe, it }      from 'mocha';
-import { expect }            from 'chai';
+
+import { expect } from 'chai';
 
 const defaultState = dashboardReducerInitialState;
 
