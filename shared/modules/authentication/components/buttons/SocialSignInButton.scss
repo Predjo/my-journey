@@ -1,0 +1,28 @@
+$color-facebook-blue: #3B5A9A;
+$color-google-red: #D64131;
+$color-twitter-blue: #23AAE1;
+
+.wrap {
+  color: white !important;
+  text-transform: none !important;
+  border-radius: 0px !important;
+  min-width: 300px;
+  font-size: 1.2rem !important;
+
+  &.facebook {
+    background-color: $color-facebook-blue;
+  }
+
+  &.google {
+    background-color: $color-google-red;
+  }
+
+  &.twitter {
+    background-color: $color-twitter-blue;
+  }
+
+  > i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+}

@@ -6,7 +6,7 @@ const argv          = require('yargs').argv;
 const LiveReloadPlugin  = require('webpack-livereload-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const vendor = ['react', 'redux', 'react-redux', 'react-router', 'react-router-redux'];
+const vendor = ['react', 'redux', 'react-redux', 'react-router', 'react-router-redux', 'immutable'];
 
 const config = {
 
@@ -15,10 +15,10 @@ const config = {
   devtool : 'eval',
 
   resolve : {
-    root : [
-      path.resolve('.')
+    modules : [
+      path.resolve('.'), 'node_modules'
     ],
-    extensions : ['', '.js', '.jsx', '.scss']
+    extensions : ['.js', '.jsx', '.scss']
   },
 
   entry : {
@@ -28,7 +28,8 @@ const config = {
   },
 
   output : {
-    filename : 'scripts/[name].js'
+    filename   : 'scripts/[name].js',
+    publicPath : '../'
   },
 
   watch : Boolean(argv.watch),
@@ -40,20 +41,26 @@ const config = {
     {
       test    : /\.js$/,
       exclude : /(node_modules|build)/,
-      loader  : 'babel',
+      loader  : 'babel-loader',
       query   : {
-        presets : ['es2015', 'react', 'stage-0'],
+        presets : [['es2015', { modules : false }], 'react', 'stage-0'],
         plugins : ['transform-decorators']
       }
     },
     {
       test   : /\.scss$/,
-      loader : ExtractTextPlugin.extract('style', [
-        'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        'sass'
-        //'postcss-loader'
-      ])
-    }]
+      loader : ExtractTextPlugin.extract({
+        fallbackLoader : 'style-loader',
+        loader         : 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader'
+      })
+    }, {
+        test   : /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader : 'url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]'
+      },
+      {
+        test   : /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader : 'file-loader?limit=1024&name=assets/fonts/[name].[ext]'
+      }]
   },
 
   plugins : [
@@ -62,8 +69,18 @@ const config = {
       __DEVSERVER__ : false
     }),
     new ExtractTextPlugin('styles/[name].css'),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'scripts/vendor.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin({
+      name      : 'vendor',
+      filename  : 'scripts/vendor.js',
+      minChunks : Infinity
+    }),
+   new webpack.LoaderOptionsPlugin({
+      minimize   : true,
+      debug      : false,
+      sassLoader : {
+        includePaths : [ path.resolve('.') ]
+      }
+    }),
     //new webpack.optimize.UglifyJsPlugin({ mangle : true, compress : { warnings : false }}),
     new LiveReloadPlugin()
   ]

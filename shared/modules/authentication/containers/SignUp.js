@@ -1,18 +1,19 @@
+
 import React, { PropTypes, Component } from 'react';
 
-import style from './Explore.scss';
+import style from './SignUp.scss';
 
-export class Explore extends Component {
+export class SignUp extends Component {
 
 
   render () {
 
     return (
       <div className = { style.wrap } >
-        Explore
+        Sign Up
       </div>
     );
   }
 }
 
-export default Explore;
+export default SignUp;

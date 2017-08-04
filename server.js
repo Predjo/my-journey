@@ -9,6 +9,7 @@ const morgan       = require('morgan');
 const passport     = require('passport');
 const session      = require('express-session');
 const path         = require('path');
+const cors         = require('cors');
 
 const index        = require('./server/modules/index');
 const auth         = require('./server/modules/auth');
@@ -27,6 +28,9 @@ const app          = express();
 // ============================================================================
 
 const PORT = process.env.PORT || Config.port;
+
+// setup CORS
+app.use(cors());
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended : false }));

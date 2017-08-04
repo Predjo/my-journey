@@ -9,7 +9,7 @@ import { expect } from 'chai';
 
 const defaultState = dashboardReducerInitialState;
 
-describe('dashboard reducer', () => {
+describe('dashboard reducer from dashboard module', () => {
 
   it('toggleDashboardSidebar action should set showNavSideBar to true by default', () => {
     expect(
